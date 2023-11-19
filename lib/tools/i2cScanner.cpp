@@ -18,24 +18,23 @@ void i2cScanner::scan()
 
         if (error == 0)
         {
-            Serial.print("I2C device found at address 0x");
+            DEBUG("I2C device found at address 0x");
             if (address < 16)
-                Serial.print("0");
-            Serial.print(address, HEX);
-            Serial.println("  !");
+                DEBUG("0");
+            DEBUG_HEX(address)
 
             nDevices++;
         }
         else if (error == 4)
         {
-            Serial.print("Unknown error at address 0x");
+            DEBUG("Unknown error at address 0x");
             if (address < 16)
-                Serial.print("0");
-            Serial.println(address, HEX);
+                DEBUG("0");
+            DEBUG_HEX(address);
         }
     }
     if (nDevices == 0)
-        Serial.println("No I2C devices found\n");
+        DEBUG("No I2C devices found\n");
     else
-        Serial.println("done\n");
+        DEBUG("done\n");
 }

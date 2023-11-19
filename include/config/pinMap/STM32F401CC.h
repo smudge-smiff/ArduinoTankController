@@ -29,6 +29,7 @@
 
 // SBUS RECIEVER UART
 #define sbusSerial UART1
+#define sbusBaud 115200
 
 
 // Discrete Outputs
@@ -65,4 +66,14 @@
 #define COMPASS_I2C_ADDRESS 0x31
 //#define IMU1 MPU95000
 #define IMU2_I2C_ADDRESS 0x69
+
+/*
+    Motor Outputs
+*/
+#define M1 PB8
+#define M2 PB9
+#define M3 PB10
+#define M4 PA8
+
 #endif
+
