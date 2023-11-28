@@ -75,5 +75,16 @@
 #define M3 PB10
 #define M4 PA8
 
+/*
+    Motor Limits
+*/
+#define M1_Lower_Limit 750
+#define M1_Mid_Point 1300
+#define M1_Uppoer_Limit 1850
+
+#define M2_Lower_Limit 1000
+#define M2_Mid_Point 1500
+#define M2_Uppoer_Limit 2000
+
 #endif
 

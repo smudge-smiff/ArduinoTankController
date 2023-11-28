@@ -7,7 +7,7 @@
 #include <threadConnectorMutex.h>
 #include "semphr.h"
 #include "i2cScanner.h"
-
+#define EEPROM_I2C_ADDRESS 0x50
 //void createTasks();
 //void createMutex();
 //void configurePeripherals();
@@ -18,6 +18,9 @@ extern void ibus_task(void* args);
 
 SemaphoreHandle_t ibusVarMutex;
 ibusRXStruct ibusRX;
+
+
+
 void createTasks(){
   i2cScanner scanner = i2cScanner();
   scanner.scan();
@@ -37,11 +40,10 @@ void configurePeripherals(){
 
 }
 
-
 void setup()
 {
   DEBUG_INIT()
-  
+  configurePeripherals();
 
   createTasks();
   createMutex();
@@ -50,3 +52,4 @@ void setup()
 
 
 void loop(){} // Never reached
+
