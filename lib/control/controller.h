@@ -7,6 +7,7 @@
 #include <threadConnectorStruct.h>
 #include <threadConnectorMutex.h>
 #include <controllers/manualMode.h>
+#include <controllers/cutOffMode.h>
 #include <Servo.h>
 #include <config/peripheralConfig.h>
 
@@ -55,6 +56,7 @@ class Controller
         int _rightOutput;
         int _rightOutputPrevious;
         ManualMode _manualMode;
+        CutOffMode _cutOffMode;
         Servo _leftMotor;
         Servo _rightMotor;
 

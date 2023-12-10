@@ -5,7 +5,6 @@ void Controller::init()
     _leftMotor.writeMicroseconds(M2_Mid_Point);
     _rightMotor.attach(M1);
     _rightMotor.writeMicroseconds(M1_Mid_Point);
-
 }
 void Controller::run()
 {
@@ -23,7 +22,7 @@ void Controller::run()
         motorRescaleOutputs();
         motorSmoothing();
         motorOutput();
-        vTaskDelay(50 / portTICK_PERIOD_MS);
+        vTaskDelay(100/ portTICK_PERIOD_MS);
     }
 }
 void Controller::initController()
@@ -31,6 +30,9 @@ void Controller::initController()
 
     switch (Mode)
     {
+    case STOP:
+        _cutOffMode.init();
+        break;
     case MANUAL:
         _manualMode.init();
         break;
@@ -40,15 +42,17 @@ void Controller::updateController()
 {
     switch (Mode)
     {
+    case STOP:
+        _cutOffMode.update(scaledThrottleCommand, scaledSteeringCommand, &processedThrottleCommand, &processedSteeringCommand);
+        break;
     case MANUAL:
-        //varDEBUG(_RcStruct.channels[throttleChannel]);
+        // varDEBUG(_RcStruct.channels[throttleChannel]);
         _manualMode.update(scaledThrottleCommand, scaledSteeringCommand, &processedThrottleCommand, &processedSteeringCommand);
-        //varDEBUG(processedThrottleCommand);
+        // varDEBUG(processedThrottleCommand);
         /*Serial.print(processedThrottleCommand);
         Serial.print(" ");
         Serial.println(processedSteeringCommand);*/
         break;
-
     }
 }
 void Controller::updateRcData()

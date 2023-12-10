@@ -26,9 +26,9 @@ void Controller::motorRescaleOutputs(){
     _leftOutput= mapToRange(processedLeftOutput, -1.0, 1.0, M2_Lower_Limit, M2_Upper_Limit);
     _rightOutput= mapToRange(processedRightOutput, -1.0, 1.0, M1_Lower_Limit, M1_Upper_Limit);
     //varDEBUG(processedLeftOutput);
-    Serial.print(_leftOutput);
+    /*Serial.print(_leftOutput);
     Serial.print(" ");
-    Serial.println(_rightOutput);
+    Serial.println(_rightOutput);*/
 }
 void Controller::motorSmoothing(){
     if (_leftOutputPrevious < M2_Mid_Point && _leftOutput > M2_Mid_Point){
@@ -46,6 +46,7 @@ void Controller::motorSmoothing(){
     }
     _leftOutputPrevious = _leftOutput;
     _rightOutputPrevious = _rightOutput;
+    _leftOutput = _leftOutput -25;
 }
 void Controller::motorOutput(){
     _leftMotor.writeMicroseconds(_leftOutput);

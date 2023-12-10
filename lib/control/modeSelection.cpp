@@ -16,7 +16,7 @@ void Controller::calculateMode(){
             break;
         
         default:
-            Mode = RTH;
+            Mode = STOP;
             break;
     }
 }
