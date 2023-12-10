@@ -2,7 +2,7 @@
 #define peripheralConfig_H_
 #include <Arduino.h>
 #include "config/pinMap/pinMap.h"
-#include <Wire.h>
+//#include <Wire.h>
 
 // UART PORTS
 static HardwareSerial UART1(UART1_RX, UART1_TX);

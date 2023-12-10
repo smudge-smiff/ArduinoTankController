@@ -78,13 +78,15 @@
 /*
     Motor Limits
 */
+// Left Motor
 #define M1_Lower_Limit 750
 #define M1_Mid_Point 1300
-#define M1_Uppoer_Limit 1850
+#define M1_Upper_Limit 1850
 
+// Right Motor
 #define M2_Lower_Limit 1000
 #define M2_Mid_Point 1500
-#define M2_Uppoer_Limit 2000
+#define M2_Upper_Limit 2000
 
 #endif
 

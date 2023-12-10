@@ -24,7 +24,7 @@ ibusRXStruct ibusRX;
 void createTasks(){
   i2cScanner scanner = i2cScanner();
   scanner.scan();
-  xTaskCreate(control_task, "control_task", configMINIMAL_STACK_SIZE * 3, NULL, 1, NULL);
+  xTaskCreate(control_task, "control_task", configMINIMAL_STACK_SIZE * 10, NULL, 1, NULL);
   xTaskCreate(led_task, "led_task", configMINIMAL_STACK_SIZE * 3, NULL, 1, NULL);
   xTaskCreate(ibus_task, "ibus_task", configMINIMAL_STACK_SIZE * 3, NULL, 1, NULL);
 }
