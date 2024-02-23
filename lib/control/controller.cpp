@@ -1,10 +1,14 @@
 #include <controller.h>
 void Controller::init()
 {
-    _leftMotor.attach(M2);
-    _leftMotor.writeMicroseconds(M2_Mid_Point);
-    _rightMotor.attach(M1);
-    _rightMotor.writeMicroseconds(M1_Mid_Point);
+    //_leftMotor.attach(M2);
+    //_leftMotor.writeMicroseconds(M2_Mid_Point);
+    //_rightMotor.attach(M1);
+    //_rightMotor.writeMicroseconds(M1_Mid_Point);
+    analogWrite(M1_Forward, 0);
+    analogWrite(M1_Aft, 0);
+    analogWrite(M2_Forward, 0);
+    analogWrite(M2_Aft, 0);
 }
 void Controller::run()
 {
@@ -47,6 +51,7 @@ void Controller::updateController()
         break;
     case MANUAL:
         // varDEBUG(_RcStruct.channels[throttleChannel]);
+        Serial.println("Man");
         _manualMode.update(scaledThrottleCommand, scaledSteeringCommand, &processedThrottleCommand, &processedSteeringCommand);
         // varDEBUG(processedThrottleCommand);
         /*Serial.print(processedThrottleCommand);

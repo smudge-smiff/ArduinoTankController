@@ -70,23 +70,27 @@
 /*
     Motor Outputs
 */
-#define M1 PB8
-#define M2 PB9
-#define M3 PB10
-#define M4 PA8
+//#define M1 PB8
+//#define M2 PB9
+//#define M3 PB10
+//#define M4 PA8
 
+#define M1_Forward PB9
+#define M1_Aft PB8
+#define M2_Forward PB10
+#define M2_Aft PA8
 /*
     Motor Limits
 */
-// Left Motor
-#define M1_Lower_Limit 750
-#define M1_Mid_Point 1300
-#define M1_Upper_Limit 1850
+// Left Motor`
+//#define M1_Lower_Limit 750
+//#define M1_Mid_Point 1300
+//#define M1_Upper_Limit 1850
 
 // Right Motor
-#define M2_Lower_Limit 1000
-#define M2_Mid_Point 1500
-#define M2_Upper_Limit 2000
+//#define M2_Lower_Limit 1000
+//#define M2_Mid_Point 1500
+//#define M2_Upper_Limit 2000
 
 #endif
 

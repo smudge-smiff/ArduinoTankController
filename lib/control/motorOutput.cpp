@@ -23,32 +23,39 @@ double Controller::clampMotorOutputs(double command){
     return command;
 }
 void Controller::motorRescaleOutputs(){
-    _leftOutput= mapToRange(processedLeftOutput, -1.0, 1.0, M2_Lower_Limit, M2_Upper_Limit);
-    _rightOutput= mapToRange(processedRightOutput, -1.0, 1.0, M1_Lower_Limit, M1_Upper_Limit);
+    _leftOutput= mapToRange(processedLeftOutput, -1.0, 1.0, -256, 256);
+    _rightOutput= mapToRange(processedRightOutput, -1.0, 1.0, -256, 256);
+    //Serial.println
     //varDEBUG(processedLeftOutput);
     /*Serial.print(_leftOutput);
     Serial.print(" ");
     Serial.println(_rightOutput);*/
 }
 void Controller::motorSmoothing(){
-    if (_leftOutputPrevious < M2_Mid_Point && _leftOutput > M2_Mid_Point){
-        _leftOutput = M2_Mid_Point;
-        DEBUG("LMU");
-    }else if (_leftOutputPrevious > M2_Mid_Point && _leftOutput < M2_Mid_Point){
-        _leftOutput = M2_Mid_Point;
-        DEBUG("LML");
-    }
 
-    if (_rightOutputPrevious < M1_Mid_Point && _rightOutput > M1_Mid_Point){
-        _rightOutput = M1_Mid_Point;
-    }else if (_rightOutputPrevious > M1_Mid_Point && _rightOutput < M1_Mid_Point){
-        _rightOutput = M1_Mid_Point;
-    }
-    _leftOutputPrevious = _leftOutput;
-    _rightOutputPrevious = _rightOutput;
-    _leftOutput = _leftOutput -25;
+    
 }
 void Controller::motorOutput(){
-    _leftMotor.writeMicroseconds(_leftOutput);
-    _rightMotor.writeMicroseconds(_rightOutput);
+    
+    if (_leftOutput > 0){
+        analogWrite(M1_Forward, _leftOutput);
+        analogWrite(M1_Aft, 0);
+    }else if (_leftOutput < 0){
+        analogWrite(M1_Forward, 0);
+        analogWrite(M1_Aft, -1*_leftOutput);
+    }else if (_leftOutput == 0){
+        analogWrite(M1_Forward, 0);
+        analogWrite(M1_Aft, 0);
+    }
+    
+    if (_rightOutput > 0){
+        analogWrite(M2_Forward, _rightOutput);
+        analogWrite(M2_Aft, 0);
+    }else if (_rightOutput < 0){
+        analogWrite(M2_Forward, 0);
+        analogWrite(M2_Aft, -1*_rightOutput);
+    }else if (_rightOutput == 0){
+        analogWrite(M2_Forward, 0);
+        analogWrite(M2_Aft, 0);
+    }
 }

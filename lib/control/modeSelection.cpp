@@ -4,11 +4,12 @@ void Controller::calculateMode(){
     int16_t cutOff = _RcStruct.channels[cutOffChannel];
 
     previousMode = Mode;
-
+    //Serial.println(cutOff);
     if (cutOff < cutOffModeValue){
         Mode = STOP;
         return;
     }
+    //Serial.println(modeSelect);
     switch (modeSelect)
     {
         case 988:
