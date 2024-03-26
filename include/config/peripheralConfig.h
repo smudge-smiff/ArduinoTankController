@@ -14,6 +14,6 @@ static HardwareSerial UART6(UART6_RX, UART6_TX);;
 #else
     #define I2C_SPEED 100000 
 #endif 
-#define CONFIGURE_I2C() Wire.setSDA(I2C1_SDA); Wire.setSCL(I2C1_SCL); Wire.begin();//Wire.setClock(I2C_SPEED);
+//#define CONFIGURE_I2C() Wire.setSDA(I2C1_SDA); Wire.setSCL(I2C1_SCL); Wire.begin();//Wire.setClock(I2C_SPEED);
 
 #endif
