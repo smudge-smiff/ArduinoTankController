@@ -27,4 +27,9 @@
         unsigned long lastUpdate;
     };
     extern altitudeStruct altitude;
+    /*
+    struct gpsStruct {
+
+    }
+    extern gpsStruct gps;*/
 #endif

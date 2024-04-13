@@ -20,12 +20,12 @@
 #define SPI_MOSI PA7
 #define SPI_MISO PA6
 // GPS UART
-#define gpsSerial UART2
-#define gpsBaud 57600
+//#define gpsSerial UART2
+#define gpsBaud 115200
 
 // TELEM RADIO UART
-#define radioSerial UART6
-#define radioBaud 38400
+//#define radioSerial UART6
+//#define radioBaud 38400
 
 // SBUS RECIEVER UART
 #define sbusSerial UART1
@@ -78,6 +78,11 @@
 #define COMPASS_I2C_ADDRESS 0x31
 //#define IMU1 MPU95000
 #define IMU2_I2C_ADDRESS 0x69
+
+// GPS
+#define GPS_UPDATE_FREQUENCY 10
+#define MINIMUM_SATELLITES_ARMING 6
+
 
 /*
     Motor Outputs
